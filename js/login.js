@@ -1,47 +1,81 @@
-const form = document.querySelector("form");
-const emailInput = document.getElementById("username");
-const passwordInput = document.getElementById("password");
+/**
+ * @constant {string} API_BASE_URL - The base URL for the API.
+ */
+const API_BASE_URL = "https://nf-api.onrender.com";
 
+/**
+ * @type {HTMLFormElement} loginForm - The login form element.
+ */
+const loginForm = document.querySelector(".login-form");
 
-form.addEventListener("submit", handleFormSubmit);
+/**
+ * @type {string|null} accessToken - The access token stored in local storage. 
+ */
+const accessToken = localStorage.getItem("accessToken");
 
+/**
+ * Makes a request to the API to retrieve posts if the access token is available.
+ * 
+ * @param {string} accessToken - The access token to use for authentication.
+ * @throws {Error} If the request fails.
+ */
+if (accessToken) {
+  fetch(`${API_BASE_URL}/api/v1/social/posts`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Failed to get posts");
+      }
+    })
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
 
-function handleFormSubmit(event) {
+/**
+ * Listens for the submit event on the login form and sends a request to the API to authenticate the user.
+ * 
+ * @param {Event} event - The event object.
+ */
+loginForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const email = emailInput.value;
-  const password = passwordInput.value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
+  const userToLogin = {
+    email: email,
+    password: password,
+  };
 
-  const storedEmail = localStorage.getItem("email");
-  const storedPassword = localStorage.getItem("password");
-
-  if (email === storedEmail && password === storedPassword) {
-    const token = generateSessionToken();
-
-
-    setCookie("sessionToken", token, 24 * 60 * 60);
-
-    localStorage.setItem("userEmail", email);
-
-    window.location.href = "blogpost.html";
-  } else {
-    alert("Invalid email or password.");
-  }
-}
-
-function generateSessionToken() {
-  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  let token = "";
-
-  for (let i = 0; i < 32; i++) {
-    token += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-
-  return token;
-}
-
-function setCookie(name, value, expirationSeconds) {
-  const expirationDate = new Date(Date.now() + expirationSeconds * 1000);
-  document.cookie = `${name}=${value};expires=${expirationDate.toUTCString()}`;
-}
+  fetch(`${API_BASE_URL}/api/v1/social/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userToLogin),
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Failed to log in");
+      }
+    })
+    .then((data) => {
+      localStorage.setItem("accessToken", data.access_token);
+      localStorage.setItem("refreshToken", data.refresh_token);
+      window.location.href = "loggedin.html";
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});

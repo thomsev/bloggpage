@@ -1,4 +1,4 @@
-.register-container {
+.login-form {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
@@ -7,15 +7,8 @@
     background-color: #f2f2f2;
   }
   
-  .register-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .register-form input[type="text"],
-  .register-form input[type="name"],
-  .register-form input[type="email"],
-  .register-form input[type="password"] {
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -25,7 +18,7 @@
     background-color: #fff;
   }
   
-  .register-form input[type="submit"] {
+  .login-form input[type="submit"] {
     background-color: #195cc0;
     color: #fff;
     padding: 14px 20px;
@@ -35,6 +28,6 @@
     cursor: pointer;
   }
   
-  .register-form input[type="submit"]:hover {
+  .login-form input[type="submit"]:hover {
     background-color: #3881f0;
   }

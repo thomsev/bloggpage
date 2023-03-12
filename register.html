@@ -12,11 +12,9 @@
       <h1>Register</h1>
       <nav>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="blogpost.html">Blog Posts</a></li> 
-          <li><a href="register.html">Register</a></li>         
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">Login</a></li> 
+            <li><a href="register.html">Register</a></li>         
         </ul>
       </nav>
     </header>
@@ -24,10 +22,13 @@
       <div class="register-container">
         <form class="register-form" id="register-form">
           <h2>Register</h2>
+          <label for="name">Name:</label>
+            <input type="name" id="name" name="name" required>
+            <br>
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
             <br>
-            <label for="password">Password (10 symbols):</label>
+            <label for="password">Password (8 symbols):</label>
             <input type="password" id="password" name="password" required minlength="10">
             <br>
             <input type="submit" value="Register">
