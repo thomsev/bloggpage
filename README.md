@@ -22,6 +22,8 @@ You can add some bullet points if you'd like to:
 
 ## Getting Started
 
+One Issue i know of that I would like a suggestion to fix is the paramters for noroff.no emails. those are commented out as they make some big issue for the rest.
+
 ### Installing
 
 
