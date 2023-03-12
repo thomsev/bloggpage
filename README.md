@@ -1,7 +1,8 @@
 # Blogg Page CA
 
-!
+My Trello for the assignment:
 
+https://trello.com/invite/b/QBPbKIYc/ATTI258904d372b9dd49d6998742d34601273F211B70/blogg-ca
 
 Our assignment to make a blogg page where users thats logged in can post, edit and delete posts.
 
