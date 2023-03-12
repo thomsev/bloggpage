@@ -2,9 +2,10 @@
 <html lang="en"></html>
 <html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Join me on my creative journey as I explore the world of art, share my experiences and provide tips and inspiration for fellow artists." />
-    <title>My Blogg Page | Home</title>
+    <meta name="description" content="Log in to our blog to connect with other artists and creatives, comment on posts, and share your own art and experiences with our community." />
+    <title>My blogg Page | Logg In</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
   </head>
   <body>
     <header>
@@ -12,22 +13,32 @@
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="blogpost.html">Blog Posts</a></li> 
+          <li><a href="index.html">Login</a></li> 
           <li><a href="register.html">Register</a></li>   
         </ul>
       </nav>
     </header>
     <main>
       <section>
-        <h2>Latest Posts</h2>
-        <div id="blog-container"></div>
+        <div class="login-container">
+          <form id="login-form" class="login-form">
+            <div class="login-header">
+              <h2>Login Form</h2>
+            </div>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="Enter Email">
+      
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter Password">
+      
+            <input type="submit" value="Login">
+          </form>
+        </div>
       </section>
     </main>
     <footer>
       <p>&copy; 2023 My Blog</p>
     </footer>
-    <script src="/js/displaypost.js"></script>
+<script src="/js/login.js"></script>
   </body>
 </html>
